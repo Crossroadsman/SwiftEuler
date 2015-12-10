@@ -1,9 +1,9 @@
 //The largest number that can be made by multiplying two three-digit numbers is 999 * 999 == 998,001
 
-func largestPalindrome(input: Int) -> Int {
-    var n = input
+func largestPalindrome(num: Int) -> Int {
+    var n = num
     while n > 0 {
-        if ( isPalindrome(intToArray(n)) ) {
+        if (isPalindrome(intToArray(n))) {
             return n
         }
         n -= 1
@@ -34,6 +34,9 @@ func isPalindrome(n: [Int]) -> Bool {
     let first = array.removeAtIndex(0)
     let last = array.removeLast()
     if (first == last) {
+        if (0 == array.count) {
+            return true
+        }
         return isPalindrome(array)
     }
     return false
