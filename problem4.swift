@@ -1,20 +1,28 @@
 //The largest number that can be made by multiplying two three-digit numbers is 999 * 999 == 998,001
+// everything about this implementation sucks
 
 func largestPalindrome(num: Int) -> Int {
     var a = num
     var b = num
-    while a > 0 {
-        while b >= a {
-            var n = a * b
+    var max = 0
+    while a >= 100 {
+        b = a
+        while b >= 100 {
+            print("a: \(a)")
+            print("b: \(b)")
+            let n = a * b
             if (isPalindrome(intToArray(n))) {
-                return n
+                if n > max {
+                    max = n
+                }
+                
             }
             b -= 1
         }
         a -= 1
         
     }
-    return 0
+    return max
 }
 
 func intToArray(n: Int) -> [Int] {
@@ -48,4 +56,4 @@ func isPalindrome(n: [Int]) -> Bool {
     return false
 }
 
-print(largestPalindrome(999 * 999))
+print(largestPalindrome(999))
