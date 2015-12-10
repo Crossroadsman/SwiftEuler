@@ -6,8 +6,10 @@ func largestPalindrome(num: Int) -> Int {
     var b = num
     var max = 0
     while a >= 100 {
+        
         b = a
         while b >= 100 {
+            if (a * b <= max) { break } // can't beat the existing value for max
             print("a: \(a)")
             print("b: \(b)")
             let n = a * b
