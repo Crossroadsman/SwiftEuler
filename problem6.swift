@@ -1,3 +1,5 @@
+
+import Cocoa
 /*
 Sum square difference
 
@@ -13,16 +15,16 @@ Find the difference between the sum of the squares of the first 100 natural numb
 */
 
 func squareDifference(n: Int) -> Int {
-
+    
     return squareOfSum(n) - sumOfSquares(n)
-
-
+    
+    
 }
 
 func makeArray(n: Int) -> [Int] {
-
+    
     var array: [Int] = []
-    for i in range (1...n) {
+    for i in (1...n) {
         array.append(i)
     }
     return array
@@ -30,18 +32,21 @@ func makeArray(n: Int) -> [Int] {
 
 
 func squareOfSum(n: Int) -> Int {
-
-    let array = makeArray(n)
     
-    return array.map({$0 * $0})
+    let array = makeArray(n)
+    let sumOfElements = array.reduce(0, combine: +)
+    return sumOfElements * sumOfElements
+    
+
+    
 }
 
 func sumOfSquares(n: Int) -> Int {
-
+    
     let array = makeArray(n)
-    let sumOfElements = array.reduce(0, +)
-    return sumOfElements * sumOfElements
-
+    let squares = array.map({$0 * $0})
+    return squares.reduce(0, combine: +)
+    
 }
 
-squareDifference(10)
+squareDifference(100)
